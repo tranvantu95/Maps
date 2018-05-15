@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //        Log.d("onSensorChanged", "" + (mags==null) + "," + (accels==null));
 
         if (mags != null && accels != null) {
-            final float[] R = new float[9];
+            final float[] R = new float[16];
             final float[] I = new float[9];
 
             float[] values = new float[3];
@@ -102,15 +102,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             Log.d("onSensorChanged", "" + ((int) (Math.acos(R[8]) * 180 / Math.PI)));
 
-            float az = (float) (Math.acos(R[8]) * 180 / Math.PI);
+            float az = (float) (Math.acos(R[10]) * 180 / Math.PI);
 
             if(Math.abs(az) < 30) return;
 
-            float x = R[6], y = R[7];
+            float x = R[8], y = R[9];
 
             float g = (float) (Math.atan2(x,y) * 180 / Math.PI);
 
-            float dg = (g - imageView.getRotation()) / 10;
+            float dg = g - imageView.getRotation();
+
+            if(Math.abs(dg) > 180) {
+                float dg2 = (360 - Math.abs(dg));
+                dg2 *= dg > 0 ? -1 : 1;
+                dg = dg2;
+            }
+
+            dg /= 10;
 
             imageView.setRotation(imageView.getRotation() + dg);
 

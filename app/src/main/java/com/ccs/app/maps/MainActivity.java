@@ -30,22 +30,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
-//        final float[] R = new float[9];
-//        final float[] I = new float[9];
-//
-//        final Handler handler = new Handler();
-//
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                sensorManager.getRotationMatrix(R, I, null, null);
-//
-//                handler.postDelayed(this, 500);
-//            }
-//        }, 500);
-
-//        startActivity(new Intent(this, MapsActivity.class));
+        startActivity(new Intent(this, MapsActivity.class));
     }
 
     @Override

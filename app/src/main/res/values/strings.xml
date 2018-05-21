@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Maps</string>
     <string name="title_activity_maps">Map</string>
+
+    <!-- Toast Messages -->
+    <string name="camera_not_found">No camera hardware found</string>
+    <string name="take_photo_help">Touch anywhere on screen to take picture</string>
+
 </resources>
